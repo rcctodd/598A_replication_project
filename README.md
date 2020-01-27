@@ -88,7 +88,7 @@ Analysis reported in the paper was conducted in [__Stata__](https://www.stata.co
 
 As we explored a replication project in R, we identified two alternatives:
 
-* Call Stata commands from R. A package - [__RStata__](https://cran.r-project.org/web/packages/RStata/index.html) is available to run Stata commands from R, but this requires a licensed version of Stata which is available to only one member of our team. This limitation will hamper our ability to collaborate.
+* Call Stata commands from R. A package - [__RStata__](https://cran.r-project.org/web/packages/RStata/index.html) - is available to run Stata commands from R, but this requires a licensed version of Stata which is available to only one member of our team. This limitation will hamper our ability to collaborate.
 * Manually convert Stata commands into R. We have examined the structure of the replication code. It is built for wholesale paper replication across 15 code files. Translating the Stata code to R to replicate a single figure would be a significant undertaking that we judge to be outside of and beyond the scope of this assignment.
 
 Seeing a viable path forward in neither of these alternatives, we have elected to change our paper selection for future assignments.
