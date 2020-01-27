@@ -14,5 +14,71 @@ Hall, J. D. Palsson C. & Price, J (2018). Is Uber a substitute or complement for
 
 
 ## Data
+The data for this replication can be found in an Open ICPSR project found by following the DOI link: https://doi.org/10.3886/E115490V2.
+
+## Data (Extended) Datasets
+Dataset defitions are provided by the Principal Investigators via [this text file](https://www.openicpsr.org/openicpsr/project/115490/version/V2/view?path=/openicpsr/115490/fcr:versions/V2/build/code/Dataset-definition.txt&type=file). and we have included them below to illustrate the input datasets.
+
+Data:
+- Uber entry and exit dates by market
+	- uberMarketName
+	- State
+	- For X in {Any, Fancy, X} and Y in {1, 2}:
+		- dateEntered`Y'Uber`X'
+		- dateExitedUber`Y'`X'
+  
+- Lyft entry and exit dates by market
+	- lyftMarketName
+	- State
+	- For Y in {1,2}:
+		- dateEntered`Y'Lyft
+		- dateExited`Y'Lyft
+  
+- Google trends data
+	- dateSurvey
+	- google_trends
+	- City
+	- State
+ 
+- Monthly NTD data
+	- NTDID
+	- dateSurvey
+	- For X in {UPT, VOMS, VRM, VRH} and Y in {Bus, Rail, Other, Total}
+		- `X'`Y'
+	- Notes:
+		- UPT: Unlinked passenger trips
+		- VOMS: Vehicles operated in maximum service
+		- VRM: Vehicle revenue miles
+		- VRH: Vehicle revenue hours
+  
+- Annual NTD data 
+	- NTDID
+	- dateSurvey
+	- For Y in {Bus, Rail, Other, Total} and X in
+		- capEx`Y' - capital expenditures
+		- annualUPT
+		- passMiles - passenger miles
+		- opEx - operating expenses
+		- routeMiles 
+		- fares
+		- aveFares
+		- aveTripLength
+		- aveOpExTrip - operating expenses per trip
+  
+- MSA controls (probably annual)--Such as census division and census region
+
+- Agency level constants
+	- NTDID
+	- is HQ in principle city of MSA or not (ie, suburban vs urban agency)
+	- Agency name
+	- UZA name
+	- UZA Number
+	- MSA Name
+	- State
+- UA to MSA crosswalk
+
+- Define treatment variables
+- Collapse to agency level
+- Generate percentiles
 
 ## Dependencies
