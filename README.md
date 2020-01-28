@@ -2,14 +2,14 @@
  
 ## Contributors
 
-[__Corey Christopherson__](https://github.com/chrico7 "Corey Christopherson on Github") ([![](https://orcid.org/sites/default/files/images/orcid_16x16.png)](https://orcid.org/0000-0001-6470-1146)), [__Thomas Winegarden__](https://github.com/ThomasWinegarden "Thomas Winegarden on Github")  ([![](https://orcid.org/sites/default/files/images/orcid_16x16.png)](https://orcid.org/0000-0003-1912-1964)), [__Richard Todd__](https://github.com/rcctodd)  ([![](https://orcid.org/sites/default/files/images/orcid_16x16.png)](https://orcid.org/0000-0003-2083-9631)), [__Zack Garcia__](https://github.com/rcctodd)  ([![](https://orcid.org/sites/default/files/images/orcid_16x16.png)](https://orcid.org/0000-0002-6538-5592))
+[__Corey Christopherson__](https://github.com/chrico7 "Corey Christopherson on Github") ([![](https://orcid.org/sites/default/files/images/orcid_16x16.png)](https://orcid.org/0000-0001-6470-1146)), [__Thomas Winegarden__](https://github.com/ThomasWinegarden "Thomas Winegarden on Github")  ([![](https://orcid.org/sites/default/files/images/orcid_16x16.png)](https://orcid.org/0000-0003-1912-1964)), [__Richard Todd__](https://github.com/rcctodd)  ([![](https://orcid.org/sites/default/files/images/orcid_16x16.png)](https://orcid.org/0000-0003-2083-9631)), [__Zack Garcia__](https://github.com/zacharyfgarcia)  ([![](https://orcid.org/sites/default/files/images/orcid_16x16.png)](https://orcid.org/0000-0002-6538-5592))
 
 
 ## Contents
 
-The purprose of this repo is to provide a complete workflow record of our attempt to replicate Figure 6  in the paper _Is Uber a Substitute or Complement for Public Transit_ by Hall, Palsson, and Price. This figure, titled "Effect of Uber on log transit ridership before and after entry", shows the coefficients of a regression of log transit ridership on the months before and after Uber entered a market.
+The purprose of this repo is to provide a complete workflow record of our attempt to replicate Figure 6  in the paper _Is Uber a Substitute or Complement for Public Transit_ by Hall, Palsson, and Price. This figure, titled "Effect of Uber on log transit ridership before and after entry", shows the coefficients of a regression of log transit ridership on the months before and after Uber entered a market. We attempt to verify whether the effect is indeed significant and whether the effect is indeed close to a 5% increase.  If we can't replicate this effect, it would reduce the impact of the central claim of the paper, as well as draw further importance to the fact that Uber ridership increases generally in larger cities and cities with small public transit anyways. 
 
-<enter claim here>
+Below is a citation of the study we are trying to replicate:
 
 Hall, J. D. Palsson C. & Price, J (2018). Is Uber a substitute or complement for public transit? Journal of Urban Economics, 108, 36-50. https://doi.org/10.1016/j.jue.2018.09.003.
 
