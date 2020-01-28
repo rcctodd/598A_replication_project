@@ -7,7 +7,7 @@
 
 ## Contents
 
-The purprose of this repo is to provide a complete workflow record of our attempt to replicate Figure 6  in the paper _Is Uber a Substitute or Complement for Public Transit_ by Hall, Palsson, and Price. This figure, titled "Effect of Uber on log transit ridership before and after entry", shows the coefficients of a regression of log transit ridership on the months before and after Uber entered a market. We attempt to verify whether the effect is indeed significant and whether the effect is indeed close to a 5% increase.  If we can't replicate this effect, it would reduce the impact of the central claim of the paper, as well as draw further importance to the fact that Uber ridership increases generally in larger cities and cities with small public transit anyways. 
+The purpose of this repo is to provide a complete workflow record of our attempt to replicate Figure 6 in the paper _Is Uber a Substitute or Complement for Public Transit_ by Hall, Palsson, and Price. This figure, titled "Effect of Uber on log transit ridership before and after entry", shows the coefficients of a regression of log transit ridership on the months before and after Uber entered a market. We attempt to verify whether the effect is indeed significant and whether the effect is indeed close to a 5% increase.  If we can't replicate this effect, it would reduce the impact of the central claim of the paper, as well as draw further importance to the fact that Uber ridership increases generally in larger cities and cities with small public transit anyways. 
 
 Below is a citation of the study we are trying to replicate:
 
