@@ -139,3 +139,7 @@ Seeing a viable path forward in neither of these alternatives, we have elected t
  usethis       1.5.1   2019-07-04 [1] CRAN (R 3.6.2)
  withr         2.1.2   2018-03-15 [1] CRAN (R 3.6.2)
  yaml          2.2.0   2018-07-25 [1] CRAN (R 3.6.0)
+ 
+ ## Contributing
+ 
+We welcome contributions from everyone. Before you get started, please see our contributor guidelines. Please note that this project is released with a Contributor Code of Conduct. By participating in this project you agree to abide by its terms.
