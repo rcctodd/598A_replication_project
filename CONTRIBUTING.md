@@ -1,6 +1,6 @@
 # Contributing to 598A_replication_project
 
-This outlines how to propose a change to I598A_replication_project. For more detailed
+This outlines how to propose a change to 598A_replication_project. For more detailed
 info about contributing to this, and other tidyverse packages, please see the
 [**development contributing guide**](https://rstd.io/tidy-contrib).
 
