@@ -334,6 +334,13 @@ ggpairs(lances_M, columns = c("total_length", "blade_length", "socket_length", "
         upper=list(continuous = "points", mapping = aes(color = site)),
         lower=list(continuous = "cor"),
         ggsave("Images/replication_fig_8.png"))
+
+
+#notes for those who follow:
+# check variable names - dont think sock_bdiam etc. is the same as min max width
+# histogram as well as density on middle plots
+# color match
+# label match
 ```
 
 ## Introduction
