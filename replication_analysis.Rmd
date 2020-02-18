@@ -328,17 +328,29 @@ names(lances_M)
 
 names(lances_M)
 
+
+
 # plot the grid
-#ggpairs(lances_M[c(5,6,7,8,9,10,11)])
 ggpairs(lances_M, columns = c("total_length", "blade_length", "socket_length", "sock_bdiam", "sock_sdiam", "width", "thickness"), 
         upper=list(continuous = "points", mapping = aes(color = site)),
         lower=list(continuous = "cor"),
-        ggsave("Images/replication_fig_8.png"))
+        ggsave("Images/replication_fig_8v1.png"))
 
+#try constructing min and max vars
+
+lances_M$socket_max = pmax(lances_M$sock_bdiam,lances_M$sock_sdiam, na.rm = TRUE)
+lances_M$socket_min = pmin(lances_M$sock_bdiam,lances_M$sock_sdiam, na.rm = TRUE)
+
+
+ggpairs(lances_M, columns = c("total_length", "blade_length", "socket_length", "socket_max", "socket_min", "width", "thickness"), 
+        upper=list(continuous = "points", mapping = aes(color = site)),
+        lower=list(continuous = "cor"),
+        ggsave("Images/replication_fig_8v2.png"))
 
 #notes for those who follow:
 # check variable names - dont think sock_bdiam etc. is the same as min max width
 # histogram as well as density on middle plots
+# trend line as well as scatter on upper plots
 # color match
 # label match
 ```
