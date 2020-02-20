@@ -151,8 +151,8 @@ plotshapes(Ipr$coords,joinline=c(1:7,1),symbol=NA)      # Plot shapes of Illerup
                           #-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-
 
 # Manually create a vector containing site
-site<-as.factor(c(rep("Ejsbøl",6),rep("Nydam",24),rep("Illerup",48)))
-site<-factor(site,levels=c("Ejsbøl","Nydam","Illerup")) # Create a vector for the different sites
+site<-as.factor(c(rep("EjsbÃ¸l",6),rep("Nydam",24),rep("Illerup",48)))
+site<-factor(site,levels=c("EjsbÃ¸l","Nydam","Illerup")) # Create a vector for the different sites
 
 # Create a geomorph data frame for analysis
 lances_geomorph<-geomorph.data.frame(shape=lancespr$coords,site=site,size=lancespr$Csize,ind=lances_GMM$site_lance.id) # Parse the data into a geomorph data frame
@@ -310,7 +310,7 @@ plot(lance.sym, warpgrids=TRUE)
 
 ```{r replicatio target, include=TRUE}
 
-#Fig.8.Correlation matrix of Havor lance dimensions showing Pearson's r(lowerpanel), accompanying bivariate plots (upperpanel) and  distributions (histograms with kernel density estimation, on the diagonal). Red=Ejsbøl, green=Nydam, blue=Illerup. 
+#Fig.8.Correlation matrix of Havor lance dimensions showing Pearson's r(lowerpanel), accompanying bivariate plots (upperpanel) and  distributions (histograms with kernel density estimation, on the diagonal). Red=EjsbÃ¸l, green=Nydam, blue=Illerup. 
 
 # Figure is 7 by 7; variables are the following, along with column ref in lances_M
 #total length 5
