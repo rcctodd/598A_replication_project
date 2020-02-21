@@ -1,4 +1,4 @@
-# Effect  of Uber on Transit Ridership: A Replication
+# Shape as a Measure of Weapon Standardisation: A Replication
  
 ## Contributors
 
@@ -7,89 +7,47 @@
 
 ## Contents
 
-The purpose of this repo is to provide a complete workflow record of our attempt to replicate Figure 6 in the paper _Is Uber a Substitute or Complement for Public Transit_ by Hall, Palsson, and Price. This figure, titled "Effect of Uber on log transit ridership before and after entry", shows the coefficients of a regression of log transit ridership on the months before and after Uber entered a market. We attempt to verify whether the effect is indeed significant and whether the effect is indeed close to a 5% increase.  If we can't replicate this effect, it would reduce the impact of the central claim of the paper, as well as draw further importance to the fact that Uber ridership increases generally in larger cities and cities with small public transit anyways. 
+The purpose of this repo is to provide a complete workflow record of our attempt to replicate Figure 8 in the paper _Shape as a measure of weapon standardisation: From metric to geometric morphometric analysis of the Iron Age ‘Havor’ lance from Southern Scandinavia_ by Birch and Martinon-Torres. This figure shows the pair-wise correlation of all lance dimensions across the three underlying datasets next to bivariate plots and distributions of each single dimension with kernel density approximation.  We attempt to verify whether these calculations and smoothed distributions look similar upon replication, and also are interested how close we can get to the correct style without any of the actual original figure code. 
 
 Below is a citation of the study we are trying to replicate:
 
-Hall, J. D. Palsson C. & Price, J (2018). Is Uber a substitute or complement for public transit? Journal of Urban Economics, 108, 36-50. https://doi.org/10.1016/j.jue.2018.09.003.
+Birch, T., & Martinon-Torres, M. (2018). Shape as a measure of weapon standardisation: From 
+    metric to geometric morphometric analysis of the Iron Age ‘Havor’ lance from Southern
+    Scandinavia. Journal of Archaeological Science, 101, 34-51. doi: 
+    https://doi.org/10.1016/j.jas.2018.11.002
 
-
-## Data
-The data for this replication can be found in an Open ICPSR project found by following the DOI link: https://doi.org/10.3886/E115490V2.
 
 ## Data (Extended) Datasets
-Dataset defitions are provided by the Principal Investigators via [this text file](https://www.openicpsr.org/openicpsr/project/115490/version/V2/view?path=/openicpsr/115490/fcr:versions/V2/build/code/Dataset-definition.txt&type=file). and we have included them below to illustrate the input datasets.
 
-Data:
-- Uber entry and exit dates by market
-	- uberMarketName
-	- State
-	- For X in {Any, Fancy, X} and Y in {1, 2}:
-		- dateEntered`Y'Uber`X'
-		- dateExitedUber`Y'`X'
-  
-- Lyft entry and exit dates by market
-	- lyftMarketName
-	- State
-	- For Y in {1,2}:
-		- dateEntered`Y'Lyft
-		- dateExited`Y'Lyft
-  
-- Google trends data
-	- dateSurvey
-	- google_trends
-	- City
-	- State
- 
-- Monthly NTD data
-	- NTDID
-	- dateSurvey
-	- For X in {UPT, VOMS, VRM, VRH} and Y in {Bus, Rail, Other, Total}
-		- `X'`Y'
-	- Notes:
-		- UPT: Unlinked passenger trips
-		- VOMS: Vehicles operated in maximum service
-		- VRM: Vehicle revenue miles
-		- VRH: Vehicle revenue hours
-  
-- Annual NTD data 
-	- NTDID
-	- dateSurvey
-	- For Y in {Bus, Rail, Other, Total} and X in
-		- capEx`Y' - capital expenditures
-		- annualUPT
-		- passMiles - passenger miles
-		- opEx - operating expenses
-		- routeMiles 
-		- fares
-		- aveFares
-		- aveTripLength
-		- aveOpExTrip - operating expenses per trip
-  
-- MSA controls (probably annual)--Such as census division and census region
+Included Files:
+- mmc2.csv: Contains dimensionality information about 123 different lances. These are the following fields: 
 
-- Agency level constants
-	- NTDID
-	- is HQ in principle city of MSA or not (ie, suburban vs urban agency)
-	- Agency name
-	- UZA name
-	- UZA Number
-	- MSA Name
-	- State
-- UA to MSA crosswalk
+	site: Where the lance was found. This can be Ejsbol, Nydam, or Illerup. 
+	ID: Unique ID for each lance
+	point: Boolean, whether it has a point
+	socket: Boolean, whether it has a socket 
+	total_length: Total lance length in cm
+	blade_length: Blade's length in cm
+	socket_length: Just the socket of the lance's length in cm
+	sock_bdiam: Maximum socket diameter in cm
+	sock_sdiam: Minimum socket diameter in cm
+	width: Blade width in cm
+	thickness: Blade thickness in cm
+	rdist: Distance between rivets in cm
+	
+- mmc3.csv: Contains normalized coordinates for the seven main "landmark" points defining the shape of 78 different lances,
+	site_lance-id: site and ID from mmc2.csv for the lance, concatenated
+	x1: x-coordinate of point 1
+	y1: y-coordinate of point 1
+	...
+	x7: x-coordinate of point 7
+	y7: y-coordinate of point 7
 
-- Define treatment variables
-- Collapse to agency level
-- Generate percentiles
+- yjasc_4911_Appendix_A.R: Source R script for analysis and figure generation done in the paper. 
+
+These data were gathered from ____. 
 
 ## Dependencies
-
-Analysis reported in the paper was conducted in [__Stata__](https://www.stata.com/), a proprietary statistical analysis software. In the intererests of furthering reproducibility, we were intrigued by this project; an opportunity to bridge the gap between the dominant tools of academic econometrics (Stata) and the open source community.
-
-As we explored a replication project in R, we identified two alternatives:
-
-* Call Stata commands from R. A package - [__RStata__](https://cran.r-project.org/web/packages/RStata/index.html) - is available to run Stata commands from R, but this requires a licensed version of Stata which is available to only one member of our team. This limitation will hamper our ability to collaborate.
-* Manually convert Stata commands into R. We have examined the structure of the replication code. It is built for wholesale paper replication across 15 code files. Translating the Stata code to R to replicate a single figure would be a significant undertaking that we judge to be outside of and beyond the scope of this assignment.
 
 Seeing a viable path forward in neither of these alternatives, we have elected to change our paper selection for future assignments.
 
