@@ -10,7 +10,7 @@ knitr::opts_chunk$set(echo = TRUE)
 ```
 
 ```{r load packages and set working dir, include=TRUE}
-
+#adding this line as a git test
 #install specific versions of pakages called out in the paper
 require(devtools)
 
