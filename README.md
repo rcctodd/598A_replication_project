@@ -2,14 +2,16 @@
  
 ## Contributors
 
-[__Corey Christopherson__](https://github.com/chrico7 "Corey Christopherson on Github") ([![](https://orcid.org/sites/default/files/images/orcid_16x16.png)](https://orcid.org/0000-0001-6470-1146)), [__Thomas Winegarden__](https://github.com/ThomasWinegarden "Thomas Winegarden on Github")  ([![](https://orcid.org/sites/default/files/images/orcid_16x16.png)](https://orcid.org/0000-0003-1912-1964)), [__Richard Todd__](https://github.com/rcctodd)  ([![](https://orcid.org/sites/default/files/images/orcid_16x16.png)](https://orcid.org/0000-0003-2083-9631)), [__Zack Garcia__](https://github.com/zacharyfgarcia)  ([![](https://orcid.org/sites/default/files/images/orcid_16x16.png)](https://orcid.org/0000-0002-6538-5592))
+[__Corey Christopherson__](https://github.com/chrico7 "Corey Christopherson on Github") ([![](https://orcid.org/sites/default/files/images/orcid_16x16.png)](https://orcid.org/0000-0001-6470-1146)), [__Thomas Winegarden__](https://github.com/ThomasWinegarden "Thomas Winegarden on Github")  ([![](https://orcid.org/sites/default/files/images/orcid_16x16.png)](https://orcid.org/0000-0003-1912-1964)), [__Richard Todd__](https://github.com/rcctodd "Richard Todd on Github")  ([![](https://orcid.org/sites/default/files/images/orcid_16x16.png)](https://orcid.org/0000-0003-2083-9631)), [__Zack Garcia__](https://github.com/zacharyfgarcia "Zack Garcia on Github")  ([![](https://orcid.org/sites/default/files/images/orcid_16x16.png)](https://orcid.org/0000-0002-6538-5592))
 
 
 ## Contents
 
-The purpose of this repo is to provide a complete workflow record of our attempt to replicate Figure 8 in the paper _Shape as a measure of weapon standardisation: From metric to geometric morphometric analysis of the Iron Age ‘Havor’ lance from Southern Scandinavia_ by Birch and Martinon-Torres. This figure shows the pair-wise correlation of all lance dimensions across the three underlying datasets next to bivariate plots and distributions of each single dimension with kernel density approximation.  We attempt to verify whether these calculations and smoothed distributions look similar upon replication, and also are interested how close we can get to the correct style without any of the actual original figure code. 
+The purpose of this repo is to provide a complete workflow record of our attempt to replicate Figure 8 in the paper _Shape as a measure of weapon standardisation: From metric to geometric morphometric analysis of the Iron Age ‘Havor’ lance from Southern Scandinavia_ by Birch and Martinon-Torres. This figure shows the pair-wise correlation of all lance dimensions across the three underlying datasets next to bivariate plots and distributions of each single dimension with kernel density approximation. We attempt to verify whether these calculations and smoothed distributions look similar upon replication, and also are interested how close we can get to the correct style without any of the actual original figure code.
 
-Below is a citation of the study we are trying to replicate:
+This project is an assignment for the class DATA 598 'Reproducibility for Data Science', taken as part of the UW Master of Data Science program.
+
+## Citation of Original Study
 
 Birch, T., & Martinon-Torres, M. (2018). Shape as a measure of weapon standardisation: From 
     metric to geometric morphometric analysis of the Iron Age ‘Havor’ lance from Southern
@@ -18,6 +20,8 @@ Birch, T., & Martinon-Torres, M. (2018). Shape as a measure of weapon standardis
 
 
 ## Data (Extended) Datasets
+
+Data for this study was obtained from the ScienceDirect online version of this article (https://doi.org/10.1016/j.jas.2018.11.002)
 
 Included Files:
 - mmc2.csv: Contains dimensionality information about 123 different lances. These are the following fields: 
@@ -44,8 +48,6 @@ Included Files:
 	y7: y-coordinate of point 7
 
 - yjasc_4911_Appendix_A.R: Source R script for analysis and figure generation done in the paper. 
-
-These data were gathered from ____. 
 
 ## Dependencies
 
@@ -98,6 +100,7 @@ Seeing a viable path forward in neither of these alternatives, we have elected t
  withr         2.1.2   2018-03-15 [1] CRAN (R 3.6.2)
  yaml          2.2.0   2018-07-25 [1] CRAN (R 3.6.0)
  
- ## Contributing
+
+## Contributing
  
 We welcome contributions from everyone. Before you get started, please see our [contributor guidelines](https://github.com/rcctodd/598A_replication_project/blob/master/CONTRIBUTING.md). Please note that this project is released with a [Contributor Code of Conduct](https://github.com/rcctodd/598A_replication_project/blob/master/CODE_OF_CONDUCT.md). By participating in this project you agree to abide by its terms.
