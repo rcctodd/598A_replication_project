@@ -9,10 +9,11 @@ output: html_document
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
-```{r load packages and set working dir, include=TRUE}
+```{r load packages, include=TRUE}
 #adding this line as a git test
 #install specific versions of pakages called out in the paper
-require(devtools)
+#require(devtools)
+library(devtools)
 
 #install_version("geomorph", version = "3.0.6", repos = "http://cran.us.r-project.org")
 library(geomorph) # geomorph 3.0.6
@@ -29,16 +30,21 @@ library(GGally)
 ```
 
 ```{r set working directory, include=TRUE}
-setwd(dirname(rstudioapi::getSourceEditorContext()$path))
-getwd()
+#setwd(dirname(rstudioapi::getSourceEditorContext()$path))
+#getwd()
+library(here)
 ```
 
 ```{r load data, include=TRUE}
 # Read the datafile "lances_M" containing a matrix of dimensional data (metric)
+
 #replication file names did not survive publication!
-lances_M<-read.csv("Data/1-s2.0-S0305440318306757-mmc2.csv",header=TRUE)
+#lances_M<-read.csv("Data/1-s2.0-S0305440318306757-mmc2.csv",header=TRUE)
+lances_M<-read.csv(here("Data","1-s2.0-S0305440318306757-mmc2.csv"),header=TRUE)
+
 # Read the datafile "lances_GMM" containing a matrix of landmark data (geometric morphometric)
-lances_GMM<-read.csv("Data/1-s2.0-S0305440318306757-mmc3.csv",header=TRUE)
+#lances_GMM<-read.csv("Data/1-s2.0-S0305440318306757-mmc3.csv",header=TRUE)
+lances_GMM<-read.csv(here("Data","1-s2.0-S0305440318306757-mmc3.csv"),header=TRUE)
 
 # Convert the 2D matrix of geometric morphometric data ("lances_GMM") into a 3D array
 lances_geo<-arrayspecs(lances_GMM[,2:15],7,2) # 7 landmarks, recording 2 dimensions only (xy coordinates), ignoring the first column of lance IDs
@@ -158,8 +164,10 @@ site<-factor(site,levels=c("Ejsbøl","Nydam","Illerup")) # Create a vector for t
 lances_geomorph<-geomorph.data.frame(shape=lancespr$coords,site=site,size=lancespr$Csize,ind=lances_GMM$site_lance.id) # Parse the data into a geomorph data frame
 
 # We can test to see if there is an association between centroid size and shape, before conducting further statistical analyses.
+
 # The results are significant, but they cannot be explained by site difference
 lances_ANOVA<-procD.allometry(shape ~ size, ~site, data=lances_geomorph,method="PredLine") # Optional right-hand formula for the inclusion of groups; "~site" can be removed to perform ANOVA on whole dataset
+
 # lances_ANOVA<-procD.allometry(shape ~ size, data=lances_geomorph,method="PredLine") # As above, but with "~site" removed
 plot(lances_ANOVA)
 print(lances_ANOVA)
