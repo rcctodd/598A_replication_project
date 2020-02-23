@@ -1,7 +1,7 @@
 ---
-title: "Replication analysis"
+title: "Replication in Archaeological Science: Shape as a Measure of Weapon Standardisation"
 author: "Team Fresh"
-date: "2/12/2020"
+date: "2/24/2020"
 output: html_document
 ---
 
@@ -16,9 +16,10 @@ knitr::opts_chunk$set(echo = TRUE)
 library(devtools)
 
 #install_version("geomorph", version = "3.0.6", repos = "http://cran.us.r-project.org")
+#install.packages("http://https://cran.r-project.org/src/contrib/Archive/geomorph/geomorph_3.0.6.tar.gz", repos=NULL, type="source")
 library(geomorph) # geomorph 3.0.6
 
-#install_version("shapes", version = "1.2.3", repos = "http://cran.us.r-project.org")
+#install_version("shapes", version = "1.2.3", repos = "http://cran.rstudio.com/") #"http://cran.us.r-project.org")
 library(shapes) # shapes 1.2.3
 
 #not mentioned in the technical appendix, but required in technical code
@@ -166,11 +167,11 @@ lances_geomorph<-geomorph.data.frame(shape=lancespr$coords,site=site,size=lances
 # We can test to see if there is an association between centroid size and shape, before conducting further statistical analyses.
 
 # The results are significant, but they cannot be explained by site difference
-lances_ANOVA<-procD.allometry(shape ~ size, ~site, data=lances_geomorph,method="PredLine") # Optional right-hand formula for the inclusion of groups; "~site" can be removed to perform ANOVA on whole dataset
+#lances_ANOVA<-procD.allometry(shape ~ size, ~site, data=lances_geomorph,method="PredLine") # Optional right-hand formula for the inclusion of groups; "~site" can be removed to perform ANOVA on whole dataset
 
 # lances_ANOVA<-procD.allometry(shape ~ size, data=lances_geomorph,method="PredLine") # As above, but with "~site" removed
-plot(lances_ANOVA)
-print(lances_ANOVA)
+#plot(lances_ANOVA)
+#print(lances_ANOVA)
 
 #Call:
 #  procD.allometry(f1 = shape ~ size, f2 = ~site, data = lances_geomorph,      method = "PredLine") 
@@ -337,12 +338,11 @@ names(lances_M)
 names(lances_M)
 
 
-
 # plot the grid
 ggpairs(lances_M, columns = c("total_length", "blade_length", "socket_length", "sock_bdiam", "sock_sdiam", "width", "thickness"), 
         upper=list(continuous = "points", mapping = aes(color = site)),
-        lower=list(continuous = "cor"),
-        ggsave("Images/replication_fig_8v1.png"))
+        lower=list(continuous = "cor"))#,
+        #ggsave(here("Images","replication_fig_8v1.png")))
 
 #try constructing min and max vars
 
@@ -352,8 +352,8 @@ lances_M$socket_min = pmin(lances_M$sock_bdiam,lances_M$sock_sdiam, na.rm = TRUE
 
 ggpairs(lances_M, columns = c("total_length", "blade_length", "socket_length", "socket_max", "socket_min", "width", "thickness"), 
         upper=list(continuous = "points", mapping = aes(color = site)),
-        lower=list(continuous = "cor"),
-        ggsave("Images/replication_fig_8v2.png"))
+        lower=list(continuous = "cor"))#,
+        #ggsave(here("Images","replication_fig_8v2.png")))
 
 #notes for those who follow:
 # check variable names - dont think sock_bdiam etc. is the same as min max width
