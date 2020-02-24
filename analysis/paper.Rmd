@@ -404,9 +404,9 @@ ggpairs(total, columns = c("total_length", "blade_length", "socket_length", "soc
         diag=list(continuous = diag_fn),
         lower=list(continuous = "cor")) + theme_minimal() +
         ggsave(here("Images","replication_fig_8_blades_and_sockets.png"))
-
-
 ```
+
+None of the author-defined data subsets (or a manual calculation based on on complete cases)allows us to replicate the correaltion results.
 
 ## Introduction
 
