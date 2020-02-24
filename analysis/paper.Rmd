@@ -16,7 +16,7 @@ knitr::opts_chunk$set(
 
 ## Introduction
 
-The traditional approach to evaluating the level of manufacturing standardization in a society has involved the comparison of standard dimensional measurements of the object through the coefficient of variation (CV) metric. Computed as a simple ratio of the standard deviation to the mean, and scaled by 100 as shown below, the coefficient of variation provides an easily interpretable measure of variation that can be compared to other measurements with different mean values.
+The traditional approach to evaluating the level of manufacturing standardization in a society has involved the comparison of standard dimensional measurements of the object through the coefficient of variation (CV) metric [1]. Computed as a simple ratio of the standard deviation to the mean, and scaled by 100 as shown below, the coefficient of variation provides an easily interpretable measure of variation that can be compared to other measurements with different mean values.
 
 $$ CV = \frac{stdev}{mean}*100 $$
 
@@ -534,4 +534,9 @@ The combination of these two replication efforts combined to make this a success
 
 ## References
 
-<What do we put in here???>
+
+1. Li, X.J., Bevan, A.H., Martinón-Torres, M., Rehren, T., Cao, W., Xia, Y., Zhao, K., 2014.
+Crossbows and imperial craft organisation: the bronze triggers of China's Terracotta
+Army. Antiquity 88, 126–140.
+
+2. Birch, T., & Martinon-Torres, M. (2018). Shape as a measure of weapon standardisation: From metric to geometric morphometric analysis of the Iron Age ‘Havor’ lance from Southern Scandinavia. Journal of Archaeological Science, 101, 34-51. doi: https://doi.org/10.1016/j.jas.2018.11.002
