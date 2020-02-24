@@ -316,51 +316,71 @@ plot(lance.sym, warpgrids=TRUE)
 ```
 
 
+The figure that we are attepting to replicate is Figure 8, captioned as a  "Correlation matrix of Havor lance dimensions showing Pearson's r(lowerpanel), accompanying bivariate plots (upperpanel) and  distributions (histograms with kernel density estimation, on the diagonal). Red=Ejsbøl, green=Nydam, blue=Illerup."
 
-```{r replicatio target, include=TRUE}
+Data appear to be drawn from the main lances_M dataframe, but the figure labels include "socket (max)" and "socket (min)" which do not haave obvious analogues in the column names.
 
-#Fig.8.Correlation matrix of Havor lance dimensions showing Pearson's r(lowerpanel), accompanying bivariate plots (upperpanel) and  distributions (histograms with kernel density estimation, on the diagonal). Red=Ejsbøl, green=Nydam, blue=Illerup. 
+A closer review of the paper leads us to the following line: "Although socket 'diameters' were measured, they are referred to here as minimum and maximum socket 'thickness' (p.38." This points us to two fields, which we can test against the summary table that is Table 1:
 
-# Figure is 7 by 7; variables are the following, along with column ref in lances_M
-#total length 5
-#blade length 6
-#socket length 7
-#socket (max) 8?
-#socket (min) 9?
-#blade width 10
-#blade thickkness 11
+```{r replication target preparation, include=TRUE, echo=FALSE}
 
-names(lances_M)
-#pearson's R
-#historam with kernal estimation
-#bivarate plots
+lances_M %>%
+  dplyr::group_by(site) %>%
+  dplyr::summarise(mean=mean(sock_sdiam, na.rm = TRUE), n = sum(!is.na(sock_sdiam)))
 
-names(lances_M)
+lances_M %>%
+  dplyr::group_by(site) %>%
+  dplyr::summarise(mean=mean(sock_bdiam, na.rm = TRUE), n = sum(!is.na(sock_bdiam)))
+```
+
+We can be confident therefore that "sock_bdiam" and "sock_sdiam" are the sources of "socket (max) [thickness (mm)]" and "socket (min) [thickness (mm)]" respectively. Using some custom functions and the excellent ggally package, we can produce a first replication of the figure.
 
 
-# plot the grid
-ggpairs(lances_M, columns = c("total_length", "blade_length", "socket_length", "sock_bdiam", "sock_sdiam", "width", "thickness"), 
-        upper=list(continuous = "points", mapping = aes(color = site)),
-        lower=list(continuous = "cor"))#,
-        #ggsave(here("Images","replication_fig_8v1.png")))
-
-#try constructing min and max vars
-
-lances_M$socket_max = pmax(lances_M$sock_bdiam,lances_M$sock_sdiam, na.rm = TRUE)
-lances_M$socket_min = pmin(lances_M$sock_bdiam,lances_M$sock_sdiam, na.rm = TRUE)
-
-
-ggpairs(lances_M, columns = c("total_length", "blade_length", "socket_length", "socket_max", "socket_min", "width", "thickness"), 
-        upper=list(continuous = "points", mapping = aes(color = site)),
-        lower=list(continuous = "cor"))#,
-        #ggsave(here("Images","replication_fig_8v2.png")))
+```{r replication figure, include=TRUE, echo=FALSE}
 
 #notes for those who follow:
 # check variable names - dont think sock_bdiam etc. is the same as min max width
-# histogram as well as density on middle plots
-# trend line as well as scatter on upper plots
 # color match
 # label match
+
+upper_fn <- function(data, mapping, ...){
+  p <- ggplot(data = data, mapping = mapping) + 
+    geom_smooth(method=loess, fill="None", color="Black", ...) +
+    geom_point(aes(color=site, alpha=0.5))
+  p
+}
+
+diag_fn <- function(data, mapping, ...){
+  p <- ggplot(data = data, mapping = mapping) + 
+    geom_histogram(bins=10, color="black", fill="cyan", aes(y = ..ncount..)) + 
+    geom_density(color="red",aes(y = ..scaled..,color="red"))
+  p
+}
+
+ggpairs(lances_M, columns = c("total_length", "blade_length", "socket_length", "sock_bdiam", "sock_sdiam", "width", "thickness"), 
+        upper=list(continuous = upper_fn),
+        diag=list(continuous = diag_fn),
+        lower=list(continuous = "cor")) + theme_minimal() +
+        ggsave(here("Images","replication_fig_8v1.png"))
+
+```
+
+The correlation values to do not match the paper. A quick test with the stats passage verifies the results of our plot and confirms that the issue is not a mis-labelling of a spearman coefficient.
+
+```{r replication corr test, include=TRUE, echo=FALSE}
+cor(lances_M$socket_length,lances_M$sock_bdiam, use= "pairwise.complete.obs", method = "pearson")
+cor(lances_M$socket_length,lances_M$sock_bdiam, use= "pairwise.complete.obs", method = "spearman")
+
+cor(lances_M$sock_sdiam,lances_M$width, use= "pairwise.complete.obs", method = "pearson")
+cor(lances_M$sock_sdiam,lances_M$width, use= "pairwise.complete.obs", method = "spearman")
+```
+```{r replication corr test, include=TRUE, echo=FALSE}
+ggpairs(lances_M[complete.cases(lances_M),], columns = c("total_length", "blade_length", "socket_length", "sock_bdiam", "sock_sdiam", "width", "thickness"), 
+        upper=list(continuous = upper_fn),
+        diag=list(continuous = diag_fn),
+        lower=list(continuous = "cor")) + theme_minimal() +
+        ggsave(here("Images","replication_fig_8v2.png"))
+
 ```
 
 ## Introduction
