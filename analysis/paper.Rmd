@@ -6,7 +6,12 @@ output: word_document
 ---
 
 ```{r setup, include=TRUE}
-knitr::opts_chunk$set(echo = TRUE)
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  echo = FALSE,
+  warning = FALSE,
+  message = FALSE
+)
 ```
 
 ## Introduction
