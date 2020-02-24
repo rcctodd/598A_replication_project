@@ -9,6 +9,17 @@ output: word_document
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
+## Introduction
+
+The traditional approach to evaluating the level of manufacturing standardization in a society has involved the comparison of standard dimensional measurements of the object through the coefficient of variation (CV) metric. Computed as a simple ratio of the standard deviation to the mean, and scaled by 100 as shown below, the coefficient of variation provides an easily interpretable measure of variation that can be compared to other measurements with different mean values.
+
+$$ CV = \frac{stdev}{mean}*100 $$
+
+However, in the paper _Shape as a measure of weapon standardization: From metric to geometric morphometric analysis of the Iron Age ‘Havor’ lance from Southern Scandinavia_ by Birch and Martinon-Torres, a new approach is proposed. Instead of relying on dimensional comparison of different CVs, they propose using a Geomorphic Morphometric (GMM) analysis as a general measure of overall shape.
+
+In this work, we are attempting to confirm that the underlying data provided is the same as that used in the original study by replicating the figure showing the pair-wise correlation of all lance dimensions across the three underlying datasets (original study Fig 8). We are also attempting to replicate the original finding that there was no significant difference in mean shape between the three datasets by performing the Procrustes ANOVA analysis using the newer procD.lm function instead of the now deprecated procD.allometry function from the original paper.
+
+
 ```{r load packages, include=TRUE}
 #adding this line as a git test
 #install specific versions of pakages called out in the paper
