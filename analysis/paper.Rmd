@@ -331,6 +331,10 @@ lances_M %>%
 lances_M %>%
   dplyr::group_by(site) %>%
   dplyr::summarise(mean=mean(sock_bdiam, na.rm = TRUE), n = sum(!is.na(sock_bdiam)))
+
+blade %>%
+  dplyr::group_by(site) %>%
+  dplyr::summarise(mean=mean(blade_length, na.rm = TRUE), n = sum(!is.na(blade_length)))
 ```
 
 We can be confident therefore that "sock_bdiam" and "sock_sdiam" are the sources of "socket (max) [thickness (mm)]" and "socket (min) [thickness (mm)]" respectively. Using some custom functions and the excellent ggally package, we can produce a first replication of the figure.
@@ -374,12 +378,33 @@ cor(lances_M$socket_length,lances_M$sock_bdiam, use= "pairwise.complete.obs", me
 cor(lances_M$sock_sdiam,lances_M$width, use= "pairwise.complete.obs", method = "pearson")
 cor(lances_M$sock_sdiam,lances_M$width, use= "pairwise.complete.obs", method = "spearman")
 ```
+Try recreating figure on different data subsets:
+
 ```{r replication corr test, include=TRUE, echo=FALSE}
 ggpairs(lances_M[complete.cases(lances_M),], columns = c("total_length", "blade_length", "socket_length", "sock_bdiam", "sock_sdiam", "width", "thickness"), 
         upper=list(continuous = upper_fn),
         diag=list(continuous = diag_fn),
         lower=list(continuous = "cor")) + theme_minimal() +
-        ggsave(here("Images","replication_fig_8v2.png"))
+        ggsave(here("Images","replication_fig_8_complete_cases_manual.png"))
+
+ggpairs(blade, columns = c("total_length", "blade_length", "socket_length", "sock_bdiam", "sock_sdiam", "width", "thickness"), 
+        upper=list(continuous = upper_fn),
+        diag=list(continuous = diag_fn),
+        lower=list(continuous = "cor")) + theme_minimal() +
+        ggsave(here("Images","replication_fig_8_blade.png"))
+
+ggpairs(socket, columns = c("total_length", "blade_length", "socket_length", "sock_bdiam", "sock_sdiam", "width", "thickness"), 
+        upper=list(continuous = upper_fn),
+        diag=list(continuous = diag_fn),
+        lower=list(continuous = "cor")) + theme_minimal() +
+        ggsave(here("Images","replication_fig_8_socket.png"))
+
+ggpairs(total, columns = c("total_length", "blade_length", "socket_length", "sock_bdiam", "sock_sdiam", "width", "thickness"), 
+        upper=list(continuous = upper_fn),
+        diag=list(continuous = diag_fn),
+        lower=list(continuous = "cor")) + theme_minimal() +
+        ggsave(here("Images","replication_fig_8_blades_and_sockets.png"))
+
 
 ```
 
