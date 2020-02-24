@@ -414,40 +414,15 @@ None of the author-defined data subsets (or a manual calculation based on on com
 
 ## Reproducing ANOVA analysis
 
-As of geomorph version 3.1, the function procD.allmoetry has been deprecated (see https://rdrr.io/cran/geomorph/man/procD.allometry.html). This function underpinned the ANOVA tests provided in the technical code appendix.
+As of geomorph version 3.1, the function procD.allmoetry has been deprecated (see https://rdrr.io/cran/geomorph/man/procD.allometry.html). This function underpinned the ANOVA tests provided in the technical code appendix. Thankfully, the specificity of the authors' instructions allow a previous version of geomorph to be installed!
+
+wereplicate the results of p.44 on the ANOVA tests used to establish whether there is a significant relationship between centroid size and shape.
 
 ```{r replication ANOVA  test, include=TRUE, echo=FALSE}
+lances_ANOVA_site<-procD.allometry(shape ~ size, ~site, data=lances_geomorph,method="PredLine") 
 
-# The results are significant, but they cannot be explained by site difference
-#lances_ANOVA<-procD.allometry(shape ~ size, ~site, data=lances_geomorph,method="PredLine") 
-lances_ANOVA<-procD.allometry(shape ~ size, data=lances_geomorph,method="PredLine")
-rep_test <- procD.lm(shape ~ size,data=lances_geomorph,method="PredLine")
-plot(rep_test)
-plot(lances_ANOVA)
+print(lances_ANOVA_site)
 
-anova.lm.rrpp(fit.common, fit.unique)
-?anova.lm.rrpp
-?plotAllometry
-#print(lances_ANOVA)
-
-# simple allometry model
-fit.size <- procD.lm(shape ~ size, 
-                     data = lances_geomorph, print.progress = FALSE)
-plot(fit.size, type = "regression", reg.type = "PredLine", predictor = lances_geomorph$size)
-plot(fit.size, type = "regression", reg.type = "RegScore", predictor = lances_geomorph$size)
-plot(lances_ANOVA)
-
-PLS <- two.b.pls(lances_geomorph$shape, lances_geomorph$size, print.progress = FALSE)
-PLS
-plot(PLS)
 ```
-## Methods
 
-
-## Results
-
-
-## Conclusion
-
-
-## References
+The results match. We note that no seed is specified in the provided code, making the random resampling approach used volatile.
