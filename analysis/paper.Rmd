@@ -5,7 +5,7 @@ date: "2/24/2020"
 output: word_document
 ---
 
-```{r setup, include=TRUE}
+```{r setup, include=FALSE}
 knitr::opts_chunk$set(
   collapse = TRUE,
   echo = FALSE,
@@ -69,6 +69,7 @@ library(devtools)
 #install.packages("http://https://cran.r-project.org/src/contrib/Archive/geomorph/geomorph_3.0.6.tar.gz", repos=NULL, type="source")
 library(geomorph) # geomorph 3.0.6
 
+install_version("shapes", version = "1.2.3", repos = "http://cran.rstudio.com/") #"http://cran.rstudio.com")
 #install_version("shapes", version = "1.2.3", repos = "http://cran.rstudio.com/") #"http://cran.us.r-project.org")
 library(shapes) # shapes 1.2.3
 
@@ -130,12 +131,22 @@ totalpca        # By typing 'totalpca' a full summary of the components is print
 str(totalpca)   # More information can be viewed about the PCA results by looking at the 'total' object in more detail.
 
 # Heirarchical Cluster Analysis of Havor lance dimensions
-totalhc <-hclust(dist(total[,(c(1,5:11))]), "average")  # The cluster analysis is performed
-totalhc1<-as.dendrogram(totalhc)                        # The cluster analysis results are converted into a dendrogram object
-plot(totalhc1)                                          # Plots the resulting dendrogram object
+#totalhc <-hclust(dist(total[,(c(1,5:11))]), "average")  # The cluster analysis is performed
+#totalhc1<-as.dendrogram(totalhc)                        # The cluster analysis results are converted into a dendrogram object
+#plot(totalhc1)                                          # Plots the resulting dendrogram object
 ```
-
-```{r analysis 2, include=TRUE}
+```{r analysis 1.1, include=FALSE}
+# Heirarchical Cluster Analysis of Havor lance dimensions
+# The cluster analysis is performed
+totalhc <-hclust(dist(total[,(c(1,5:11))]), "average")
+# The cluster analysis results are converted into a dendrogram object
+totalhc1<-as.dendrogram(totalhc)                      
+```
+```{r analysis 1.2, include=TRUE}
+# Plots the resulting dendrogram object
+plot(totalhc1)
+```
+```{r analysis 2, include=FALSE}
 
   
                           #-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-
@@ -156,7 +167,7 @@ Ico<-lances_geo[,,31:78]  # Illerup (n=48)
 
 ```
 
-```{r plotting digitized specs, include=TRUE}
+```{r plotting digitized specs, include=FALSE}
                           #-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#
                           #### 6. PLOTTING DIGITISED SPECIMENS ----
                           #-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#
@@ -169,7 +180,7 @@ plotAllSpecimens(Ico,links=outline)         # Plot landmarks of Illerup lances (
 
 ```
 
-```{r GPA, include=TRUE}
+```{r GPA, include=FALSE}
 
                           #-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-
                           #### 7. GENERALISED PROCRUSTES ANALYSIS (GPA) ----
@@ -184,7 +195,7 @@ Ipr<-gpagen(Ico)              # GPA of Illerup lances
 
 ```
 
-```{r plotting GPA, include=TRUE}
+```{r plotting GPA, include=FALSE}
 
 
                           #-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#
@@ -205,7 +216,7 @@ plotshapes(Ipr$coords,joinline=c(1:7,1),symbol=NA)      # Plot shapes of Illerup
 
 ```
 
-```{r check size vs shape, include=TRUE}
+```{r check size vs shape, include=FALSE}
                           #-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-
                           #### 9. ALLOMETRY: CHECKING IF SHAPE IS RELATED TO SIZE ----
                           #-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-
@@ -254,7 +265,7 @@ lances_ANOVA<-procD.allometry(shape ~ size, ~site, data=lances_geomorph,method="
 
 ```
 
-```{r test mean shape diff, include=TRUE}
+```{r test mean shape diff, include=FALSE}
                           #-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-
                           #### 10. TESTING FOR MEAN SHAPE DIFFERENCE: HOTELLING T^2 STATISTIC AND GOODALL F STATISTIC ----
                           #-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-
@@ -280,7 +291,7 @@ test3<-testmeanshapes(Ico,Nco,resamples=1000,replace=TRUE,scale=TRUE) # Comparin
 
 ```
 
-```{r ANOVA test, include=TRUE}
+```{r ANOVA test, include=FALSE}
                           #-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#
                           #### 11. PROCRUSTES ANALYSIS OF VARIANCE (ANOVA) ----
                           #-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#
@@ -306,7 +317,7 @@ print(lances_ANOVA2)
 #Total     77 0.82805       
 ```
 
-```{r PCA, include=TRUE}
+```{r PCA, include=FALSE}
 
                           #-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#
                           #### 12. PRINCIPAL COMPONENTS ANALYSIS (PCA) OF GENERALISED PROCRUSTES ----
@@ -318,7 +329,7 @@ lancespca       # By typing 'lancespca' a full summary of the components is prin
 str(lancespca)  # More information can be viewed about the PCA results by looking at the 'lancespca' object in more detail.
 ```
 
-```{r JCA, include=TRUE}
+```{r JCA, include=FALSE}
                           #-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#
                           #### 13. HEIRARCHICAL CLUSTER ANALYSIS (HCA) OF GENERALISED PROCRUSTES ----
                           #-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#
@@ -330,7 +341,7 @@ plot(hc1)                               # Plots the resulting dendrogram object
 
 ```
 
-```{r bilateral symmetry, include=TRUE}
+```{r bilateral symmetry, include=FALSE}
 
                           #-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-#-
                           #### 14. BILATERAL SYMMETRY INVESTIGATION ----
@@ -422,11 +433,13 @@ diag_fn <- function(data, mapping, ...){
 #        lower=list(continuous = "cor")) + theme_minimal() +
 #        ggsave(here("Images","replication_fig_8v1.png"))
 
-ggpairs(lances_M, columns = c('total_length', 'blade_length', 'socket_length', 'sock_bdiam', 'sock_sdiam', 'width', 'thickness'),  
-        upper=list(continuous = upper_fn),
-        diag=list(continuous = diag_fn),
-        lower=list(continuous = "cor")) + theme_minimal() +
-        ggsave(here("Images","replication_fig_8v1.png"))
+#Copied to try to adjust to get to knit in Thomas's env
+#COMMENTED OUT BY THOMAS IN ORDER TO KNIT
+#ggpairs(lances_M, columns = c('total_length', 'blade_length', 'socket_length', 'sock_bdiam', 'sock_sdiam', 'width', #'thickness'),  
+#        upper=list(continuous = upper_fn),
+#        diag=list(continuous = diag_fn),
+#        lower=list(continuous = "cor")) + theme_minimal() +
+#        ggsave(here("Images","replication_fig_8v1.png"))
 
 ```
 
