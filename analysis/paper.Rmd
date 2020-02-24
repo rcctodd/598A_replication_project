@@ -28,6 +28,9 @@ library(shapes)
 #package for lattice replication
 library(GGally)
 
+#package to support updating geomoreph code
+library(RRPP)
+
 ```
 
 ```{r set working directory, include=TRUE}
@@ -167,8 +170,8 @@ lances_geomorph<-geomorph.data.frame(shape=lancespr$coords,site=site,size=lances
 # We can test to see if there is an association between centroid size and shape, before conducting further statistical analyses.
 
 # The results are significant, but they cannot be explained by site difference
-#lances_ANOVA<-procD.allometry(shape ~ size, ~site, data=lances_geomorph,method="PredLine") # Optional right-hand formula for the inclusion of groups; "~site" can be removed to perform ANOVA on whole dataset
-
+lances_ANOVA<-procD.allometry(shape ~ size, ~site, data=lances_geomorph,method="PredLine") # Optional right-hand formula for the inclusion of groups; "~site" can be removed to perform ANOVA on whole dataset
+?procD.allometry
 # lances_ANOVA<-procD.allometry(shape ~ size, data=lances_geomorph,method="PredLine") # As above, but with "~site" removed
 #plot(lances_ANOVA)
 #print(lances_ANOVA)
@@ -315,6 +318,7 @@ lance.sym
 plot(lance.sym, warpgrids=TRUE)
 ```
 
+## Reproducing Figure 8 and associated analysis
 
 The figure that we are attepting to replicate is Figure 8, captioned as a  "Correlation matrix of Havor lance dimensions showing Pearson's r(lowerpanel), accompanying bivariate plots (upperpanel) and  distributions (histograms with kernel density estimation, on the diagonal). Red=Ejsbøl, green=Nydam, blue=Illerup."
 
@@ -408,9 +412,35 @@ ggpairs(total, columns = c("total_length", "blade_length", "socket_length", "soc
 
 None of the author-defined data subsets (or a manual calculation based on on complete cases)allows us to replicate the correaltion results.
 
-## Introduction
+## Reproducing ANOVA analysis
 
+As of geomorph version 3.1, the function procD.allmoetry has been deprecated (see https://rdrr.io/cran/geomorph/man/procD.allometry.html). This function underpinned the ANOVA tests provided in the technical code appendix.
 
+```{r replication ANOVA  test, include=TRUE, echo=FALSE}
+
+# The results are significant, but they cannot be explained by site difference
+#lances_ANOVA<-procD.allometry(shape ~ size, ~site, data=lances_geomorph,method="PredLine") 
+lances_ANOVA<-procD.allometry(shape ~ size, data=lances_geomorph,method="PredLine")
+rep_test <- procD.lm(shape ~ size,data=lances_geomorph,method="PredLine")
+plot(rep_test)
+plot(lances_ANOVA)
+
+anova.lm.rrpp(fit.common, fit.unique)
+?anova.lm.rrpp
+?plotAllometry
+#print(lances_ANOVA)
+
+# simple allometry model
+fit.size <- procD.lm(shape ~ size, 
+                     data = lances_geomorph, print.progress = FALSE)
+plot(fit.size, type = "regression", reg.type = "PredLine", predictor = lances_geomorph$size)
+plot(fit.size, type = "regression", reg.type = "RegScore", predictor = lances_geomorph$size)
+plot(lances_ANOVA)
+
+PLS <- two.b.pls(lances_geomorph$shape, lances_geomorph$size, print.progress = FALSE)
+PLS
+plot(PLS)
+```
 ## Methods
 
 
