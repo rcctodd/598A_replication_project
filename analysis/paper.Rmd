@@ -19,6 +19,11 @@ However, in the paper _Shape as a measure of weapon standardization: From metric
 
 In this work, we are attempting to confirm that the underlying data provided is the same as that used in the original study by replicating the figure showing the pair-wise correlation of all lance dimensions across the three underlying datasets (original study Fig 8). We are also attempting to replicate the original finding that there was no significant difference in mean shape between the three datasets by performing the Procrustes ANOVA analysis using the newer procD.lm function instead of the now deprecated procD.allometry function from the original paper.
 
+## Methods
+
+## Results
+
+## 
 
 ```{r load packages, include=TRUE}
 #adding this line as a git test
@@ -329,7 +334,7 @@ lance.sym
 plot(lance.sym, warpgrids=TRUE)
 ```
 
-## Reproducing Figure 8 and associated analysis
+### Reproducing Figure 8 and associated analysis
 
 The figure that we are attepting to replicate is Figure 8, captioned as a  "Correlation matrix of Havor lance dimensions showing Pearson's r(lowerpanel), accompanying bivariate plots (upperpanel) and  distributions (histograms with kernel density estimation, on the diagonal). Red=Ejsbøl, green=Nydam, blue=Illerup."
 
@@ -423,7 +428,7 @@ ggpairs(total, columns = c("total_length", "blade_length", "socket_length", "soc
 
 None of the author-defined data subsets (or a manual calculation based on on complete cases)allows us to replicate the correaltion results.
 
-## Reproducing ANOVA analysis
+### Reproducing ANOVA analysis
 
 As of geomorph version 3.1, the function procD.allmoetry has been deprecated (see https://rdrr.io/cran/geomorph/man/procD.allometry.html). This function underpinned the ANOVA tests provided in the technical code appendix. Thankfully, the specificity of the authors' instructions allow a previous version of geomorph to be installed!
 
@@ -458,3 +463,7 @@ print(lances_ANOVA_three)
 ```
 
 The core result still holds.
+
+## Conclusion
+
+## References
