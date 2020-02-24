@@ -30,8 +30,8 @@ In this work, we are attempting to confirm that the underlying data provided is 
 #install specific versions of pakages called out in the paper
 #require(devtools)
 library(devtools)
-
-#install_version("geomorph", version = "3.0.6", repos = "http://cran.us.r-project.org")
+#install_version("geomorph", version = "3.0.6", repos = "http://cran.rstudio.com")
+#install_version("geomorph", version = "3.0.6", repos = "http://cran.r-project.org")
 #install.packages("http://https://cran.r-project.org/src/contrib/Archive/geomorph/geomorph_3.0.6.tar.gz", repos=NULL, type="source")
 library(geomorph) # geomorph 3.0.6
 
@@ -381,7 +381,14 @@ diag_fn <- function(data, mapping, ...){
   p
 }
 
-ggpairs(lances_M, columns = c("total_length", "blade_length", "socket_length", "sock_bdiam", "sock_sdiam", "width", "thickness"), 
+#COMMENTED OUT BY THOMAS IN ORDER TO KNIT
+#ggpairs(lances_M, columns = c("total_length", "blade_length", "socket_length", #"sock_bdiam", "sock_sdiam", "width", "thickness"), 
+#        upper=list(continuous = upper_fn),
+#        diag=list(continuous = diag_fn),
+#        lower=list(continuous = "cor")) + theme_minimal() +
+#        ggsave(here("Images","replication_fig_8v1.png"))
+
+ggpairs(lances_M, columns = c('total_length', 'blade_length', 'socket_length', 'sock_bdiam', 'sock_sdiam', 'width', 'thickness'),  
         upper=list(continuous = upper_fn),
         diag=list(continuous = diag_fn),
         lower=list(continuous = "cor")) + theme_minimal() +
@@ -400,30 +407,34 @@ cor(lances_M$sock_sdiam,lances_M$width, use= "pairwise.complete.obs", method = "
 ```
 Try recreating figure on different data subsets:
 
-```{r replication corr test, include=TRUE, echo=FALSE}
-ggpairs(lances_M[complete.cases(lances_M),], columns = c("total_length", "blade_length", "socket_length", "sock_bdiam", "sock_sdiam", "width", "thickness"), 
-        upper=list(continuous = upper_fn),
-        diag=list(continuous = diag_fn),
-        lower=list(continuous = "cor")) + theme_minimal() +
-        ggsave(here("Images","replication_fig_8_complete_cases_manual.png"))
+```{r replication corr test 2, include=TRUE, echo=FALSE}
+#COMMENTED OUT BY THOMAS IN ORDER TO KNIT
+#ggpairs(lances_M[complete.cases(lances_M),], columns = c("total_length", "blade_length", #"socket_length", "sock_bdiam", "sock_sdiam", "width", "thickness"), 
+#        upper=list(continuous = upper_fn),
+#        diag=list(continuous = diag_fn),
+#        lower=list(continuous = "cor")) + theme_minimal() +
+#        ggsave(here("Images","replication_fig_8_complete_cases_manual.png"))
 
-ggpairs(blade, columns = c("total_length", "blade_length", "socket_length", "sock_bdiam", "sock_sdiam", "width", "thickness"), 
-        upper=list(continuous = upper_fn),
-        diag=list(continuous = diag_fn),
-        lower=list(continuous = "cor")) + theme_minimal() +
-        ggsave(here("Images","replication_fig_8_blade.png"))
+#COMMENTED OUT BY THOMAS IN ORDER TO KNIT
+#ggpairs(blade, columns = c("total_length", "blade_length", "socket_length", #"sock_bdiam", "sock_sdiam", "width", "thickness"), 
+#        upper=list(continuous = upper_fn),
+#        diag=list(continuous = diag_fn),
+#        lower=list(continuous = "cor")) + theme_minimal() +
+#        ggsave(here("Images","replication_fig_8_blade.png"))
 
-ggpairs(socket, columns = c("total_length", "blade_length", "socket_length", "sock_bdiam", "sock_sdiam", "width", "thickness"), 
-        upper=list(continuous = upper_fn),
-        diag=list(continuous = diag_fn),
-        lower=list(continuous = "cor")) + theme_minimal() +
-        ggsave(here("Images","replication_fig_8_socket.png"))
+#COMMENTED OUT BY THOMAS IN ORDER TO KNIT
+#ggpairs(socket, columns = c("total_length", "blade_length", "socket_length", #"sock_bdiam", "sock_sdiam", "width", "thickness"), 
+#        upper=list(continuous = upper_fn),
+#        diag=list(continuous = diag_fn),
+#        lower=list(continuous = "cor")) + theme_minimal() +
+#        ggsave(here("Images","replication_fig_8_socket.png"))
 
-ggpairs(total, columns = c("total_length", "blade_length", "socket_length", "sock_bdiam", "sock_sdiam", "width", "thickness"), 
-        upper=list(continuous = upper_fn),
-        diag=list(continuous = diag_fn),
-        lower=list(continuous = "cor")) + theme_minimal() +
-        ggsave(here("Images","replication_fig_8_blades_and_sockets.png"))
+#COMMENTED OUT BY THOMAS IN ORDER TO KNIT
+#ggpairs(total, columns = c("total_length", "blade_length", "socket_length", #"sock_bdiam", "sock_sdiam", "width", "thickness"), 
+#        upper=list(continuous = upper_fn),
+#        diag=list(continuous = diag_fn),
+#        lower=list(continuous = "cor")) + theme_minimal() +
+#        ggsave(here("Images","replication_fig_8_blades_and_sockets.png"))
 ```
 
 None of the author-defined data subsets (or a manual calculation based on on complete cases)allows us to replicate the correaltion results.
