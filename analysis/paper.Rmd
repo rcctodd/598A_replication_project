@@ -416,7 +416,7 @@ None of the author-defined data subsets (or a manual calculation based on on com
 
 As of geomorph version 3.1, the function procD.allmoetry has been deprecated (see https://rdrr.io/cran/geomorph/man/procD.allometry.html). This function underpinned the ANOVA tests provided in the technical code appendix. Thankfully, the specificity of the authors' instructions allow a previous version of geomorph to be installed!
 
-wereplicate the results of p.44 on the ANOVA tests used to establish whether there is a significant relationship between centroid size and shape.
+We replicate the results of p.44 on the ANOVA tests used to establish whether there is a significant relationship between centroid size and shape.
 
 ```{r replication ANOVA  test, include=TRUE, echo=FALSE}
 lances_ANOVA_site<-procD.allometry(shape ~ size, ~site, data=lances_geomorph,method="PredLine") 
