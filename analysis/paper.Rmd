@@ -165,9 +165,18 @@ We can be confident therefore that "sock_bdiam" and "sock_sdiam" are the sources
 # color match
 # label match
 
+
+#upper_fn <- function(data, mapping, ...){
+#  p <- ggplot(data = data, mapping = mapping) + 
+#    geom_smooth(method=loess, fill="None", color="Black", ...) +
+#    geom_point(aes(color=site, alpha=0.5))
+#  p
+#}
+
+#REMOVED fill="None"
 upper_fn <- function(data, mapping, ...){
   p <- ggplot(data = data, mapping = mapping) + 
-    geom_smooth(method=loess, fill="None", color="Black", ...) +
+    geom_smooth(method=loess, color="Black", ...) +
     geom_point(aes(color=site, alpha=0.5))
   p
 }
@@ -188,13 +197,12 @@ pairs_fig <- ggpairs(lances_M, columns = c("total_length", "blade_length", "sock
 print(pairs_fig, progress = F) 
 
 #Copied to try to adjust to get to knit in Thomas's env
-#COMMENTED OUT BY THOMAS IN ORDER TO KNIT
-pairs_fig <- ggpairs(lances_M, columns = c('total_length', 'blade_length', 'socket_length', 'sock_bdiam', 'sock_sdiam', 'width', 'thickness'),  
-        upper=list(continuous = upper_fn),
-        diag=list(continuous = diag_fn),
-        lower=list(continuous = "cor")) + theme_minimal() #+
-        #ggsave(here("Images","replication_fig_8v1.png"))
-print(pairs_fig, progress = F) 
+#pairs_fig <- ggpairs(lances_M, columns = c('total_length', 'blade_length', 'socket_length', 'sock_bdiam', #'sock_sdiam', 'width', 'thickness'),  
+#        upper=list(continuous = upper_fn),
+#        diag=list(continuous = diag_fn),
+#        lower=list(continuous = "cor")) + theme_minimal() #+
+#        #ggsave(here("Images","replication_fig_8v1.png"))
+#print(pairs_fig, progress = F) 
 
 ```
 
