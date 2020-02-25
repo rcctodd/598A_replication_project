@@ -102,7 +102,7 @@ cor(blade$blade_length,blade$width,use="pairwise.complete.obs")         # 0.58
 cor(blade$blade_length,blade$thickness,use="pairwise.complete.obs")     # 0.47
 
 # GPA is performed on the lances, including the semi-landmarks at the socket.
-lancespr<-gpagen(lances_geo)  # GPA of all lances
+lancespr<-gpagen(lances_geo, print.progress = FALSE)  # GPA of all lances
 
 # Manually create a vector containing site
 site<-as.factor(c(rep("Ejsbøl",6),rep("Nydam",24),rep("Illerup",48)))
