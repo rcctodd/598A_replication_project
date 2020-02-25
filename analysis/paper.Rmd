@@ -20,7 +20,7 @@ The traditional approach to evaluating the level of manufacturing standardizatio
 
 $$ CV = \frac{stdev}{mean}*100 $$
 
-However, in the paper _Shape as a measure of weapon standardization: From metric to geometric morphometric analysis of the Iron Age ‘Havor’ lance from Southern Scandinavia_ by Birch and Martinon-Torres, a new approach is proposed. Instead of relying on dimensional comparison of different CVs, they propose using a Geomorphic Morphometric (GMM) analysis as a general measure of overall shape.
+However, in the paper _Shape as a measure of weapon standardization: From metric to geometric morphometric analysis of the Iron Age ‘Havor’ lance from Southern Scandinavia_ by Birch and Martinon-Torres, a new approach is proposed. Instead of relying on dimensional comparison of different CVs, they propose using a Geomorphic Morphometric (GMM) analysis as a general measure of overall shape [2].
 
 In this work, we are attempting to confirm that the underlying data provided is the same as that used in the original study by replicating the figure showing the pair-wise correlation of all lance dimensions across the three underlying datasets (original study Fig 8). We are also attempting to replicate the original finding that there was found to be an association between overall centroid size and shape that could not be explained through site difference via an ANOVA analysis.
 
@@ -188,7 +188,6 @@ diag_fn <- function(data, mapping, ...){
   p
 }
 
-#COMMENTED OUT BY THOMAS IN ORDER TO KNIT
 pairs_fig <- ggpairs(lances_M, columns = c("total_length", "blade_length", "socket_length", "sock_bdiam", "sock_sdiam", "width", "thickness"), 
         upper=list(continuous = upper_fn),
         diag=list(continuous = diag_fn),
