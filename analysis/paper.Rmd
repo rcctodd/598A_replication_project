@@ -52,6 +52,12 @@ library(GGally)
 #package to support updating geomorph code for those that cannot use old package
 #library(RRPP)
 
+
+#Running on OSX instead of Windows advice:
+# 1. Install XCode (this enables devtools)
+# 2. Install XQuartz https://www.xquartz.org/
+# 3. Install gfortran https://gcc.gnu.org/wiki/GFortranBinariesMacOS
+
 ```
 
 Our next step was to set the working directory. Although a trivial step, the original code used setwd() and a static path string while our reproduction attempt opted to use the more robust here() library as shown below.
